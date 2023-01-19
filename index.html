@@ -83,16 +83,24 @@
                     <input type="text" class="inp" id="res" value="0" readonly="">
                 </button> <!-- /scroll -->
 
-                <div id="form" class="iframe-form">
+                <div id="form" class="iframe-form show">
                     <div id="order" class="boxit">
 
                         <div class="frame-container" style="padding: 30px;">
 
                             <div class="row-form">
-                                <form id="order_form" action="/order/cpa/" method="POST">
-                                    <input type="text" class="input-roulette" id="input-name" name="name" required="required" class="input-roulette" placeholder="Ваше имя">
-                                    <input type="text" class="input-roulette" id="input-phone" name="phone" required="required" class="input-roulette" placeholder="Ваш телефон">
-
+                                <form id="order_form" action="https://formspree.io/f/xeqwolek" method="POST">
+                                    <input type="text" class="input-roulette" id="input-name" name="name" required="required" placeholder="Ваше имя">
+                                    <input
+                                      type="tel"
+                                      class="input-roulette"
+                                      id="input-phone"
+                                      name="phone"
+                                      required="required"
+                                      pattern="\+38\([0-9]{3}\)-[0-9]{3}-[0-9]{2}-[0-9]{2}"
+                                      title="Phone mask: +38(XXX)-XXX-XX-XX"
+                                      placeholder="Ваш телефон"
+                                    >
 
                                     <input type="submit" class="submit-roulette" value="ПОЛУЧИТЬ БЕСПЛАТНО">
 

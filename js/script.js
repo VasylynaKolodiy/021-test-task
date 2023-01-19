@@ -123,7 +123,7 @@ function app() {
 
 function myMassange(userGend) {
   let mass =
-    '<div class="chat-content-item user "><div class="chat-content-desc"><div class="chat-content-desc-item user"><p>' +
+    '<div class="chat-content-item user "><div class="chat-content-desc"><div class="chat-content-desc-item user"><p class="answers">' +
     userGend +
     "</p></div></div></div>";
   $(".chat-content-list").append(mass);
@@ -308,3 +308,41 @@ function scrollDown() {
     wrap.scrollTop(desiredHeight);
   }
 }
+
+let form = document.getElementById("order_form");
+async function handleSubmit(event) {
+  event.preventDefault();
+  let answers = document.querySelectorAll('.answers');
+  const data = new FormData(event.target);
+  data.append('gender', answers[0].innerHTML);
+  data.append('age', answers[1].innerHTML);
+  data.append('allergy', answers[2].innerHTML);
+
+  fetch(event.target.action, {
+    method: form.method,
+    body: data,
+    headers: {
+      'Accept': 'application/json'
+    }
+  }).then(response => {
+    if (response.ok) {
+      alert("Thanks for your submission!");
+      form.reset()
+    } else {
+      alert("Oops! There was a problem submitting your form")
+    }
+  }).catch(error => {
+    alert("Oops! There was a problem submitting your form")
+  });
+
+}
+form.addEventListener("submit", handleSubmit)
+
+document.getElementById('input-phone').addEventListener('input', function (e) {
+  let x = e.target.value.slice(3).replaceAll('(', '').replaceAll(')', '').replaceAll('-', '').replace([/\D/g], '').match(/(\d{0,3})(\d{0,3})(\d{0,2})(\d{0,2})/);
+
+  e.target.value = '+38' + (x[1].length  > 0 && x[1].length <= 3 ? ('(' + x[1]) :  '')
+    + (x[2].length  > 0 && x[2].length < 3  ?  ')-' + x[2] : x[2].length === 3 ? (')-' + x[2]) : '' )
+    + (x[3].length  > 0 && x[3].length < 2  ?  '-' + x[3] : x[3].length === 2 ? ('-' + x[3] ) : '' )
+    + (x[4].length  > 0 && x[4].length < 2  ?  '-' + x[4] : x[4].length === 2 ? ('-' + x[4] ) : '' )
+});
