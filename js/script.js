@@ -1,4 +1,4 @@
-const massange = [
+const messenger = [
   {
     m: "Здравствуйте, меня зовут Ольга Викторовна. Я врач высшей категории и кандидат медицинских наук, специализируюсь на кардиологии. Я провожу ЭКГ и занимаюсь лечением ишемической болезни сердца, постинфарктных состояний, артериальной гипертензии, нарушений сердечного ритма и сердечной недостаточности. Добро пожаловать на мой официальный сайт.",
   },
@@ -22,11 +22,11 @@ const massange = [
   },
 ];
 
-var mass_id = 0;
-var length_mass = 0;
-var lengt_num_mas = 0;
-var text = "";
-var process = true;
+let mass_id = 0;
+let length_mass = 0;
+let length_num_mas = 0;
+let text = "";
+let process = true;
 const set = setTimeout(() => {
   const body_mas =
     '<div class="chat-content-item manager "><div class="chat-content-desc"><div class="chat-content-desc-item manager"><p id="mass' +
@@ -34,15 +34,15 @@ const set = setTimeout(() => {
     '"></p></div></div></div>';
   $(".chat-content-list").append(body_mas);
   const mas_inf = setInterval(function () {
-    if (process == true) {
-      if (lengt_num_mas != massange.length) {
-        text += massange[lengt_num_mas].m[length_mass];
+    if (process === true) {
+      if (length_num_mas !== messenger.length) {
+        text += messenger[length_num_mas].m[length_mass];
         length_mass++;
         scrollDown();
-        $("#mass" + lengt_num_mas + "").html(text);
+        $("#mass" + length_num_mas + "").html(text);
         if (
-          lengt_num_mas === 3 &&
-          length_mass === massange[lengt_num_mas].m.length - 1
+          length_num_mas === 3 &&
+          length_mass === messenger[length_num_mas].m.length - 1
         ) {
           appGender();
           process = false;
@@ -50,8 +50,8 @@ const set = setTimeout(() => {
           scrollDown();
         }
         if (
-          lengt_num_mas === 4 &&
-          length_mass === massange[lengt_num_mas].m.length - 1
+          length_num_mas === 4 &&
+          length_mass === messenger[length_num_mas].m.length - 1
         ) {
           appAge();
           process = false;
@@ -59,16 +59,16 @@ const set = setTimeout(() => {
           scrollDown();
         }
         if (
-          lengt_num_mas === 5 &&
-          length_mass === massange[lengt_num_mas].m.length - 1
+          length_num_mas === 5 &&
+          length_mass === messenger[length_num_mas].m.length - 1
         ) {
           process = false;
           YsNo();
           scrollDown();
         }
         if (
-          lengt_num_mas === 6 &&
-          length_mass === massange[lengt_num_mas].m.length - 1
+          length_num_mas === 6 &&
+          length_mass === messenger[length_num_mas].m.length - 1
         ) {
           process = false;
           Photofoot();
@@ -84,24 +84,24 @@ const set = setTimeout(() => {
           }, 1000);
         }
 
-        if (length_mass == massange[lengt_num_mas].m.length) {
+        if (length_mass === messenger[length_num_mas].m.length) {
           scrollDown();
-          lengt_num_mas++;
+          length_num_mas++;
           mass_id++;
           length_mass = 0;
           text = "";
           app();
-          let proc_scroling = lengt_num_mas - 1;
+          let proc_scroling = length_num_mas - 1;
           let nev_div = $("#mass" + proc_scroling + "")[0].offsetParent
             .offsetTop;
           scriplongBody(nev_div);
         }
       } else if (
-        lengt_num_mas === 21
+        length_num_mas === 21
       ) {
         scrollDown();
         clearInterval(mas_inf);
-        $('#mass' + lengt_num_mas + '').parent().parent().css('display', 'none');
+        $('#mass' + length_num_mas + '').parent().parent().css('display', 'none');
         $('.iframe-form').css('display', 'block');
         scrollDown();
         clearInterval(set);
@@ -172,7 +172,7 @@ function appAge() {
     let empty_field = $(".select-day").val();
     let full_month = $(".select-month").val();
     let year = $(".select-year").val();
-    if (empty_field != "" && full_month != "" && year != "") {
+    if (empty_field !== "" && full_month !== "" && year !== "") {
       let selectS = "" + empty_field + "." + full_month + "." + year + "";
 
       myMassange(selectS);
@@ -206,7 +206,7 @@ function YsNo() {
 
 function Photofoot() {
   $(".chat-content-list").append(
-    '<div class="chat-content-desc-item manager"><img class="symptomsImg" style="max-width: 625px;" src="images/symptomsFull.png" id="foot1"><img class="symptoms-mobile" src="images/symptoms.png"></div>'
+    '<div class="chat-content-desc-item manager"><img class="symptomsImg" style="max-width: 625px;" src="images/symptomsFull.png" id="foot1" alt="symptomsFull"><img class="symptoms-mobile" src="images/symptoms.png" alt="symptoms-mobile"></div>'
   );
   setTimeout(() => {
     addArray();
@@ -216,73 +216,73 @@ function Photofoot() {
 
 
 function addArray() {
-  end_massange1 = {
+  const end_messenger1 = {
     m: 'У большинства людей с гипертонией не проявляется никаких симптомов, поэтому ее называют "молчаливым убийцей" А если у Вас уже наблюдаться выше перечисленные симптомы это сигнализирует о больших проблемах с сердцем.',
-  };
-  end_massange2 = {
+  }
+  const end_messenger2 = {
     m: "Повышенное кровяное давление очень опасно. Чем выше кровяное давление, тем выше риск повреждения сердца или кровеносных сосудов в основных органах, таких как мозг или почки. Неконтролируемая гипертония может привести к инфаркту, увеличению сердца и, в конечном итоге, к сердечной недостаточности. В кровеносных сосудах могут развиваться расширения (аневризмы) и появляться уязвимые места, в которых сосуды с большей вероятностью могут закупориваться и разрываться. Давление в кровеносных сосудах может привести к кровоизлиянию в мозг и развитию инсульта. Гипертония может также приводить к почечной недостаточности, слепоте и когнитивным нарушениям.",
   };
-  end_massange3 = {
+  const end_messenger3 = {
     m: "Первая рекомендация - вести здоровый образ жизни и уделять особое внимание надлежащему питанию. Также следует уменьшать потребление соли до менее 5 г в день (чуть менее одной чайной ложки).",
   };
-  end_massange4 = {
+  const end_messenger4 = {
     m: "Вторая рекомендация - управлять стрессом такими здоровыми способами, как медитация, надлежащие физические упражнения и позитивные социальные контакты.",
   };
-  end_massange5 = {
+  const end_messenger5 = {
     m: "В Вашем случае обязательно нужно чистить сосуды и организм в целом. Для этого вам помогут вытяжки из плодов боярышника, цветков календулы, цветков липы, листьев мать-и-мачехи, травы мелиссы, травы пустырника, травы зверобоя, травы тысячелистника, плодов софоры, плодов шиповника, комплекс из 12-ти витаминов. Это самые необходимые средства, которые помогут Вам избавиться от гипертонии.",
   };
-  end_massange6 = {
+  const end_messenger6 = {
     m: "Для избавления от головной боли и восстановления давления достаточно принимать капсулы «GiperoPlus» 2 раза в день по 1 штуке, независимо от приема пищи, главное запивать большим количеством воды.",
   };
-  end_massange7 = {
+  const end_messenger7 = {
     m: "Абсолютно каждый компонент из состава «GiperoPlus» оказывает комплексное положительное воздействие на работу всех внутренних органов и систем. Также он снимает негативное влияние стрессов и переживаний, делает организм более выносливым и активным. Огромный перечень натуральных компонентов способствует быстрому и бережному восстановлению сердечно-сосудистой системы.",
   };
-  end_massange8 = {
+  const end_messenger8 = {
     m: "Вот так он выглядит: ",
   };
-  end_massange9 = {
-    m: '<img src="images/offer.png">',
+  const end_messenger9 = {
+    m: '<img src="images/offer.png" alt="offer">',
   };
-  end_massange10 = {
+  const end_messenger10 = {
     m: "Оптимальная продолжительность курса, которая учитывает Ваш возраст, образ жизни и текущее состояние здоровья, составляет от 30 дней.",
   };
-  end_massange11 = {
+  const end_messenger11 = {
     m: "Доказано, что даже продолжительное использование показывает значительные результаты. Лекарство оказывает следующее действие:",
   };
-  end_massange12 = {
+  const end_messenger12 = {
     m: "- улучшает химический состав крови; </br> - приводит уровень артериального давления в норму; </br> - избавляет от застойных явлений; </br> - очищает от шлаков и токсинов; </br> - избавляет от атеросклеротических бляшек; </br> - улучшает мозговое кровообращение; </br> - повышает выносливость и активность; </br> - препятствует возникновению осложнений; </br> - способствует оздоровлению поврежденных тканей.",
   };
-  end_massange13 = {
+  const end_messenger13 = {
     m: "А ещё у меня для Вас отличные новости. Вы прошли онлайн-диагностику и тем самым стали участником розыгрыша этого препарата, который является нашим спонсором. Только сегодня, у Вас есть возможность получить «GiperoPlus» -  <span style='color: red;'>бесплатно</span>.",
   };
-  end_massange14 = {
+  const end_messenger14 = {
     m: "Чтобы получить «GiperoPlus», впишите своё имя и номер телефона в форму заказа ниже. Ваши данные отправляются напрямую производителю, больше никто не имеет к ним доступа. Вам перезвонит специалист и после уточнения всех необходимых деталей, в тот же день Вам будет отправлена посылка с курсом «GiperoPlus».",
   };
-  massange.push(
-    end_massange1,
-    end_massange2,
-    end_massange3,
-    end_massange4,
-    end_massange5,
-    end_massange6,
-    end_massange7,
-    end_massange8,
-    end_massange9,
-    end_massange10,
-    end_massange11,
-    end_massange12,
-    end_massange13,
-    end_massange14
+  messenger.push(
+    end_messenger1,
+    end_messenger2,
+    end_messenger3,
+    end_messenger4,
+    end_messenger5,
+    end_messenger6,
+    end_messenger7,
+    end_messenger8,
+    end_messenger9,
+    end_messenger10,
+    end_messenger11,
+    end_messenger12,
+    end_messenger13,
+    end_messenger14
   );
 }
 
 
-let top_scroling = 0;
 
+let top_scroling = 0;
 function scriplongBody(x) {
   let ekac_x = x + 70;
   top_scroling += ekac_x;
-  var set = setTimeout(() => {
+  const set = setTimeout(() => {
     $("#page_chat").animate(
       {
         scrollTop: top_scroling,
@@ -299,7 +299,7 @@ function showForm() {
 }
 
 function scrollDown() {
-  var wrap = $(".content"),
+  const wrap = $(".content"),
     wrapHeight = wrap.height(),
     currentHeight = wrap.scrollTop(),
     wrapScrollHeight = wrap.prop("scrollHeight"),
@@ -309,10 +309,11 @@ function scrollDown() {
   }
 }
 
-let form = document.getElementById("order_form");
+//sending form
+const form = document.getElementById("order_form");
 async function handleSubmit(event) {
   event.preventDefault();
-  let answers = document.querySelectorAll('.answers');
+  const answers = document.querySelectorAll('.answers');
   const data = new FormData(event.target);
   data.append('gender', answers[0].innerHTML);
   data.append('age', answers[1].innerHTML);
@@ -331,18 +332,38 @@ async function handleSubmit(event) {
     } else {
       alert("Oops! There was a problem submitting your form")
     }
-  }).catch(error => {
+  }).catch(() => {
     alert("Oops! There was a problem submitting your form")
   });
 
 }
 form.addEventListener("submit", handleSubmit)
 
+//validating phone
 document.getElementById('input-phone').addEventListener('input', function (e) {
-  let x = e.target.value.slice(3).replaceAll('(', '').replaceAll(')', '').replaceAll('-', '').replace([/\D/g], '').match(/(\d{0,3})(\d{0,3})(\d{0,2})(\d{0,2})/);
+  const x = e.target.value.slice(3).replaceAll('(', '').replaceAll(')', '').replaceAll('-', '').replace([/\D/g], '').match(/(\d{0,3})(\d{0,3})(\d{0,2})(\d{0,2})/);
 
-  e.target.value = '+38' + (x[1].length  > 0 && x[1].length <= 3 ? ('(' + x[1]) :  '')
-    + (x[2].length  > 0 && x[2].length < 3  ?  ')-' + x[2] : x[2].length === 3 ? (')-' + x[2]) : '' )
-    + (x[3].length  > 0 && x[3].length < 2  ?  '-' + x[3] : x[3].length === 2 ? ('-' + x[3] ) : '' )
-    + (x[4].length  > 0 && x[4].length < 2  ?  '-' + x[4] : x[4].length === 2 ? ('-' + x[4] ) : '' )
+  e.target.value = '+38' + (x[1].length > 0 && x[1].length <= 3 ? ('(' + x[1]) : '')
+    + (x[2].length > 0 && x[2].length < 3 ? ')-' + x[2] : x[2].length === 3 ? (')-' + x[2]) : '')
+    + (x[3].length > 0 && x[3].length < 2 ? '-' + x[3] : x[3].length === 2 ? ('-' + x[3]) : '')
+    + (x[4].length > 0 && x[4].length < 2 ? '-' + x[4] : x[4].length === 2 ? ('-' + x[4]) : '')
+});
+
+//scrolling down button
+document.getElementById("scroll_id").addEventListener("click", scrollDown);
+
+//showing more comments
+const glowButton = document.querySelector('.glow-button')
+glowButton.addEventListener("click", () => {
+  const comments = document.querySelectorAll('.comment-item');
+  const countCommentsShown = document.querySelectorAll('.comment-item-show').length;
+  let i = 0;
+  while ((countCommentsShown + i < comments.length) && (i < 3)) {
+    comments[countCommentsShown + i].classList.add('comment-item-show')
+    i++
+  }
+
+  if (comments.length === countCommentsShown) {
+    glowButton.classList.add('hidden')
+  }
 });
