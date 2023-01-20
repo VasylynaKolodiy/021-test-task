@@ -1368,9 +1368,11 @@ img {
 .about.dec::-webkit-scrollbar:hover {
   width: 10px !important;
 }
-.content::-webkit-scrollbar-button,
+.content::-webkit-scrollbar-button{
+  background-color:  rgba(0, 0, 0, 0.8);
+}
 .about.dec::-webkit-scrollbar-button {
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: transparent;
 }
 .content::-webkit-scrollbar-track,
 .about.dec::-webkit-scrollbar-track {
